@@ -45,3 +45,12 @@ https://github.com/jennyrigsjo/MVCDatabase/blob/MVCDatabase3/Databases%20Assignm
 
 ## Assignment instructions:
 https://github.com/jennyrigsjo/MVCIdentity/blob/master/ASP.NET%20Identity%20Assignment.pdf
+
+# MVC Web API
+This is the 'backend' component of the project assignment for week 40. 
+
+Assignment instructions here:
+https://github.com/jennyrigsjo/MVCWebAPI/blob/master/React%20Assignment%20-%20Single-Page%20CMS.pdf
+
+The corresponding 'frontend' part of the project can be found here:
+https://github.com/jennyrigsjo/React/tree/week40
