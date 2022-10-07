@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "Contact";
+
+    Dictionary<string, string> social = new Dictionary<string, string>()
+    {
+        {"github", "https://github.com/jennyrigsjo"},
+        {"linkedin", "https://www.linkedin.com/in/jennyrigsjo/"}
+    };
+}
+
+<h1>Where to find me</h1>
+
+<section class="contact offline">
+    <h2>Offline</h2>
+    <p><i class="icon address"></i> Address: Tallbackegatan 14, City of Alingsås</p>
+    <p><i class="icon phone"></i> Phone: 0763 - 44 63 73</p>
+    <p><i class="icon email"></i> E-mail: jenny.rigsjo&#64;live.com</p>
+</section>
+
+<section class="contact online">
+    <h2>Online</h2>
+    <ul>
+        @foreach (KeyValuePair<string, string> link in social)
+        {
+            string name = App_Code_Shared.CapitalizeFirstLetter(link.Key);
+            <li><i class="icon @link.Key"></i> <a href=@link.Value>@name</a></li>
+        }
+    </ul>
+</section>
+
+
+

@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Edit City";
+}
+
+@model UpdateCityViewModel
+
+<h1>Edit City</h1>
+
+@if (Model.ID == 0)
+{
+    <p>No city found.</p>
+}
+else
+{
+    <form asp-controller="Cities" asp-action="UpdateCity" method="post" class="update city">
+        <div asp-validation-summary="All" class="error-message"></div>
+        <fieldset>
+            <legend>Update city details</legend>
+
+            <input asp-for="ID" type="hidden" readonly>
+
+            <div class="field">
+                <label asp-for="Name" for="name"></label>
+                <input asp-for="Name" name="name" type="text">
+                <span asp-validation-for="Name"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="Country" for="country"></label>
+                <select asp-for="Country" name="country" asp-items="@Model.SelectCountry"></select>
+                <span asp-validation-for="Country"></span>
+            </div>
+
+            <input type="submit" name="submit" value="Update" class="submit">
+        </fieldset>
+    </form>
+}

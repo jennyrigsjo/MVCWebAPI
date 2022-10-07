@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "People Index";  
+}
+
+@model PeopleViewModel
+
+
+<h1>People Index</h1>
+
+<a asp-controller="People" asp-action="CreatePerson" class="btn btn-primary create person">Create New Person</a>
+
+<form asp-controller="People" asp-action="Search" method="post" class="search people">
+    <fieldset>
+        <legend>Search for people</legend>
+
+        <label for="search">Search term:</label>
+        <input type="text" id="search" name="search" value="@Model.Search" required>
+
+        <input type="submit" name="submit" value="Search" class="submit">
+    </fieldset>
+</form>
+
+
+<h2>List of people</h2>
+
+@if (Model.List.Any())
+{
+    <div class="container table people">
+        <div class="row column-headers">
+            <div class="column-header col-xs-3 col-sm-3 col-md-3 col-lg-3">Name</div>
+            <div class="column-header col-xs-3 col-sm-3 col-md-3 col-lg-3">Telephone</div>
+            <div class="column-header col-xs-3 col-sm-3 col-md-3 col-lg-3">City</div>
+            <div class="column-header col-xs-3 col-sm-3 col-md-3 col-lg-3">Languages</div>
+            <div class="column-header col-xs-3 col-sm-3 col-md-3 col-lg-3">Action</div>
+        </div>
+        @foreach (Person person in Model.List)
+        {
+            <partial name="~/Views/Shared/_TableRowPerson.cshtml" model="person" />
+        }
+    </div>
+}
+else
+{
+    <p>List has no items.</p>
+}

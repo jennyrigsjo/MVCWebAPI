@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Edit Person";
+}
+
+@model UpdatePersonViewModel
+
+<h1>Edit Person</h1>
+
+@if (Model.ID == 0)
+{
+    <p>No person found.</p>
+}
+else
+{
+    <form asp-controller="People" asp-action="UpdatePerson" method="post" class="update person">
+        <div asp-validation-summary="All" class="error-message"></div>
+        <fieldset>
+            <legend>Update person details</legend>
+
+            <input asp-for="ID" type="hidden" readonly>
+
+            <div class="field">
+                <label asp-for="Name" for="name"></label>
+                <input asp-for="Name" name="name" type="text">
+                <span asp-validation-for="Name"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="Phone" for="phone"></label>
+                <input asp-for="Phone" name="phone" type="text">
+                <span asp-validation-for="Phone"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="City" for="city"></label>
+                <select asp-for="City" name="city" asp-items="@Model.SelectCity"></select>
+                <span asp-validation-for="City"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="Languages" for="languages"></label>
+                <select asp-for="Languages" name="languages" asp-items="@Model.SelectLanguages" multiple></select>
+                <span asp-validation-for="Languages"></span>
+            </div>
+
+            <input type="submit" name="submit" value="Update" class="submit">
+        </fieldset>
+    </form>
+}

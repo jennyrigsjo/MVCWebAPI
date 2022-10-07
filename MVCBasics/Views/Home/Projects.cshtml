@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "Projects";
+    var repos = ViewBag.Repos ?? null;
+}
+
+<h1>Projects I have worked on</h1>
+
+@if (repos != null)
+{
+    <section class="projects github">
+        <h2>Latest GitHub projects</h2>
+        <ul>
+            @foreach (var repo in repos)
+            {
+                <li class="project">
+                    <h3 class="heading"><a href="@repo.Url">@repo.Name</a></h3>
+                    <p class="description">@repo.Description</p>
+                </li>
+            }
+        </ul>
+    </section>
+}
+
+<section class="projects freelance">
+    <h2>Websites I have built</h2>
+    <ul>
+        <li class="project">
+            <h3 class="heading"><a href="https://skrivarverkstanalingsas.se/">Skrivarverkstan</a></h3>
+            <p class="description">A website dedicated to showcasing the writings by the members of a writer’s group known as Skrivarverkstan, based in the city of Alingsås. Skrivarverkstan is a non-profit writer’s circle organised by the Church of Sweden, Sweden’s largest Christian society. The aim of the group is to encourage creativity and a love of writing in adults.</p>
+        </li>
+
+        <li class="project">
+            <h3 class="heading"><a href="https://bibvanner.se/">Bibliotekets Vänner</a></h3>
+            <p class="description">The official homepage of Bibliotekets Vänner in Alingsås. Bibliotekets Vänner is a non-profit association in Alingsås, Sweden. Its aim is to support the local library and to contribute to a diverse cultural life by arranging events and programs with a literary profile.</p>
+        </li>
+
+        <li class="project">
+            <h3 class="heading"><a href="https://ahfalingsas.se/">Alingsås Humanistiska Förbund</a></h3>
+            <p class="description">The Humanist Society of Alingsås is part of the national Swedish Humanist Society. They arrange programs and events with a cultural profile and they work locally to promote democracy, education and humanities.</p>
+        </li>
+    </ul>
+</section>
+

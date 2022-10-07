@@ -1,0 +1,28 @@
+﻿@model List<ApplicationUser>
+
+@{
+    Layout = null; // Prevent layout from being rendered twice
+}
+
+@if (Model.Any())
+{
+    <div class="table users-in-role embedded">
+        <div class="row column-headers">
+            <div class="column column-header">ID</div>
+            <div class="column column-header">User Name</div>
+        </div>
+        @foreach (ApplicationUser user in Model)
+        {
+            <div class="row user-in-role">
+                <div class="column">@user.Id</div>
+                <div class="column">@user.UserName</div>
+            </div>
+        }
+    </div>
+}
+
+else
+{
+    <p>List has no items.</p>
+}
+

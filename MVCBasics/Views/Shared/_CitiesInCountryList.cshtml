@@ -1,0 +1,26 @@
+﻿@model CitiesViewModel
+
+@{
+    Layout = null; // Prevent layout from being rendered twice
+}
+
+@if (Model.List.Any())
+{
+    <div class="table cities-in-country embedded">
+        <div class="row column-headers">
+            <div class="column-header">Name</div>
+        </div>
+        @foreach (City city in Model.List)
+        {
+            <div class="row city-in-country">
+                <div class="column">@city.Name</div>
+            </div>
+        }
+    </div>
+}
+
+else
+{
+    <p>List has no items.</p>
+}
+

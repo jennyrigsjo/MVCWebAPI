@@ -1,0 +1,30 @@
+﻿@model PeopleViewModel
+
+@{
+    Layout = null; // Prevent layout from being rendered twice
+}
+
+@if (Model.List.Any())
+{
+    <div class="table city-inhabitants embedded">
+    <div class="row column-headers">
+        <div class="column-header">Name</div>
+        <div class="column-header">Phone</div>
+        <div class="column-header">Languages</div>
+    </div>
+    @foreach (Person person in Model.List)
+    {
+        <div class="row city-inhabitant">
+            <div class="column">@person.Name</div>
+            <div class="column">@person.Phone</div>
+            <div class="column">@App_Code_Shared.GetLanguageString(person)</div>
+        </div>
+    }
+</div>
+}
+
+else
+{
+    <p>List has no items.</p>
+}
+

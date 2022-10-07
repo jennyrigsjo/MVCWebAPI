@@ -1,0 +1,12 @@
+﻿@model Country
+
+<div class="row country">
+    <div class="column col-xs-3 col-sm-3 col-md-3 col-lg-3">@Model.ID</div>
+    <div class="column col-xs-3 col-sm-3 col-md-3 col-lg-3">@Model.Name</div>
+    <div class="column col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        <span id="view-cities-country-@Model.ID" class="link" onclick="GetCitiesInCountry(@Model.ID)">View cities</span>
+        <a class="edit" asp-controller="Countries" asp-action="UpdateCountry" asp-route-id="@Model.ID">Edit</a>
+        <a class="delete" asp-controller="Countries" asp-action="DeleteCountry" asp-route-id="@Model.ID">Delete</a>
+    </div>
+</div>
+<div id="cities-country-@Model.ID"></div>

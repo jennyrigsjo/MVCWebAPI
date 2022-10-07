@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Language Index";
+}
+
+@model ViewModelsContainer
+
+<h1>Language Index</h1>
+
+<form asp-controller="Languages" asp-action="CreateLanguage" method="post" class="create language">
+    <div asp-validation-summary="All" class="error-message"></div>
+    <fieldset>
+        <legend>Add a language</legend>
+
+        <div class="field">
+            <label asp-for="CreateLanguage.Name" for="name"></label>
+            <input asp-for="CreateLanguage.Name" name="name" type="text">
+            <span asp-validation-for="CreateLanguage.Name"></span>
+        </div>
+
+        <input type="submit" name="submit" value="Create" class="submit">
+    </fieldset>
+</form>
+
+@if (Model.Languages.List.Any())
+{
+    <div class="container table people">
+        <div class="row column-headers">
+            <div class="column-header col-xs-3 col-sm-3 col-md-3 col-lg-3">ID</div>
+            <div class="column-header col-xs-3 col-sm-3 col-md-3 col-lg-3">Name</div>
+            <div class="column-header col-xs-3 col-sm-3 col-md-3 col-lg-3">Action</div>
+        </div>
+        @foreach (Language language in Model.Languages.List)
+        {
+            <partial name="~/Views/Shared/_TableRowLanguage.cshtml" model="language" />
+        }
+    </div>
+}
+else
+{
+    <p>List has no items.</p>
+}

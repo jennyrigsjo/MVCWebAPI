@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Create Person";  
+}
+
+@model CreatePersonViewModel
+
+
+<h1>Create Person</h1>
+
+<form asp-controller="People" asp-action="CreatePerson" method="post" class="create person">
+    <div asp-validation-summary="All" class="error-message"></div>
+    <fieldset>
+        <legend>Add a person</legend>
+
+        <div class="field">
+            <label asp-for="Name" for="name"></label>
+            <input asp-for="Name" name="name" type="text">
+            <span asp-validation-for="Name"></span>
+        </div>
+
+        <div class="field">
+            <label asp-for="Phone" for="phone"></label>
+            <input asp-for="Phone" name="phone" type="text">
+            <span asp-validation-for="Phone"></span>
+        </div>
+
+        <div class="field">
+            <label asp-for="City" for="city"></label>
+            <select asp-for="City" name="city" asp-items="@Model.SelectCity"></select>
+            <span asp-validation-for="City"></span>
+        </div>
+
+        <div class="field">
+            <label asp-for="Languages" for="languages"></label>
+            <select asp-for="Languages" name="languages" asp-items="@Model.SelectLanguages" multiple></select>
+            <span asp-validation-for="Languages"></span>
+        </div>
+
+        <input type="submit" name="submit" value="Create" class="submit">
+    </fieldset>
+</form>

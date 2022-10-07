@@ -1,0 +1,64 @@
+﻿@{
+    string title = $"{ViewBag.Title} | Jenny Rigsjö";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="A simple website built using ASP.NET">
+    <meta name="keywords" content="ASP.NET, MVC, Razor">
+    <meta name="author" content="Jenny Rigsjö">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/lib/twitter-bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/style.css">
+    <title>@title</title>
+    </head>
+    <body>
+        <header>
+                <a asp-controller="Home" asp-action="About" title="Jenny Rigsjö">
+                    <div id="logo"></div>
+                </a>
+                <partial name="_LoginPartial" /></>
+               <nav class="main-nav">
+                    <ul class="menu">
+                        <li><a asp-controller="Home" asp-action="About">Home</a></li>
+
+                        <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+
+                        <li><a asp-controller="Home" asp-action="Projects">Projects</a></li>
+
+                        <li><a asp-controller="Doctor" asp-action="FeverCheck">Fever Check</a></li>
+
+                         <li><a asp-controller="GuessNumber" asp-action="GuessNumber">Guessing Game</a></li>
+
+                         @if (User.IsInRole("User") || User.IsInRole("Administrator"))
+                         {
+                            <li><a asp-controller="People" asp-action="Index">People</a></li>
+                         }
+
+                         @if (User.IsInRole("Administrator"))
+                         {
+                            <li><a asp-controller="Cities" asp-action="Index">Cities</a></li>
+
+                            <li><a asp-controller="Countries" asp-action="Index">Countries</a></li>
+
+                            <li><a asp-controller="Languages" asp-action="Index">Languages</a></li>
+
+                            <li><a asp-controller="Users" asp-action="Index">Users</a></li>
+
+                            <li><a asp-controller="Roles" asp-action="Index">Roles</a></li>
+                         }
+                   </ul>
+               </nav>
+        </header>
+        <main>
+            @RenderBody()
+        </main>
+        <footer>&copy; @DateTime.Now.Year | Jenny Rigsjö</footer>
+        <script src="~/lib/jquery/jquery.min.js"></script>
+        <script src="~/js/ajax.js"></script>
+        @await RenderSectionAsync("Scripts", required:false)
+    </body>
+    </html>

@@ -1,0 +1,33 @@
+﻿@model PeopleViewModel
+
+@{
+    Layout = null; // Prevent layout from being rendered twice
+    var person = Model.List.Any() ? Model.List.First() : null;
+}
+
+@if (person == null)
+{
+    <p>No matching item found.</p>
+} 
+
+else
+{
+    <div class="container table person">
+
+        <div class="row column-headers">
+            <div class="column-header col-xs-3 col-sm-3 col-md-3 col-lg-3">Name</div>
+            <div class="column-header col-xs-3 col-sm-3 col-md-3 col-lg-3">Telephone</div>
+            <div class="column-header col-xs-3 col-sm-3 col-md-3 col-lg-3">City</div>
+            <div class="column-header col-xs-3 col-sm-3 col-md-3 col-lg-3">Languages</div>
+        </div>
+
+        <div class="row person">
+            <div class="column col-xs-3 col-sm-3 col-md-3 col-lg-3">@person.Name</div>
+            <div class="column col-xs-3 col-sm-3 col-md-3 col-lg-3">@person.Phone</div>
+            <div class="column col-xs-3 col-sm-3 col-md-3 col-lg-3">@person.City.Name</div>
+            <div class="column col-xs-3 col-sm-3 col-md-3 col-lg-3">@App_Code_Shared.GetLanguageString(person)</div>
+        </div>
+
+    </div>
+}
+

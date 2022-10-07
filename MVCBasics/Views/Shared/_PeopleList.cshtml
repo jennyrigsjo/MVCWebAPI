@@ -1,0 +1,27 @@
+﻿@model PeopleViewModel
+
+@{
+    Layout = null; // Prevent layout from being rendered twice
+}
+
+<h2>List of people</h2>
+
+@if (Model.List.Any())
+{
+<div class="container table people">
+    <div class="row column-headers">
+        <div class="column-header col-xs-3 col-sm-3 col-md-3 col-lg-3">ID</div>
+        <div class="column-header col-xs-3 col-sm-3 col-md-3 col-lg-3">Name</div>
+    </div>
+    @foreach (Person person in Model.List)
+    {
+        <partial name="~/Views/Shared/_PersonItem.cshtml" model="person" />
+    }
+</div>
+}
+
+else
+{
+    <p>List has no items.</p>
+}
+

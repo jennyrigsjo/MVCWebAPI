@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Guessing Game";
+
+    string guess = ViewBag.Guess ?? string.Empty;
+    string guessCount = ViewBag.GuessCount ?? string.Empty;
+    string lowestGuessCount = ViewBag.LowestGuessCount ?? string.Empty;
+    string message = ViewBag.Message ?? string.Empty;
+
+    bool playAgain = ViewBag.AskPlayAgain ?? false;
+    string playAgainQuestion = playAgain ? "Play again?" : string.Empty;
+    string toggleMakeGuess = playAgain ? "disabled=disabled" : string.Empty;
+    string togglePlayAgain = playAgain ? string.Empty : "disabled=disabled";
+}
+
+<h1>Guess my number</h1>
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="message-container guess-number">
+        <p class="message guess-number">@ViewBag.Message @playAgainQuestion</p>
+        <span class="guess-number guess-count"><b>Guesses:</b> @guessCount</span>
+        <span class="guess-number best-guess-count"><b>Lowest guess count:</b> @lowestGuessCount</span>
+    </div>
+}
+
+<form asp-controller="GuessNumber" asp-action="GuessNumber" method="post" class="guess-number">
+    <fieldset>
+        <legend>Make a guess</legend>
+        <label for="guess">Guess:</label>
+        <input type="number" id="guess" name="guess" min="1" max="100" value=@guess step="1" required>
+    </fieldset>
+
+    <input type="submit" name="action" value="Guess" class="submit" @toggleMakeGuess>
+    <input type="submit" name="action" value="Play Again" class="submit" @togglePlayAgain>
+</form>

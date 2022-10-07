@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "City Index";
+}
+
+@model ViewModelsContainer
+
+<h1>City Index</h1>
+
+<form asp-controller="Cities" asp-action="CreateCity" method="post" class="create city">
+    <div asp-validation-summary="All" class="error-message"></div>
+    <fieldset>
+        <legend>Add a city</legend>
+
+        <div class="field">
+            <label asp-for="CreateCity.Name" for="name"></label>
+            <input asp-for="CreateCity.Name" name="name" type="text">
+            <span asp-validation-for="CreateCity.Name"></span>
+        </div>
+
+        <div class="field">
+            <label asp-for="CreateCity.Country" for="country"></label>
+            <select asp-for="CreateCity.Country" name="country" asp-items="@Model.CreateCity.SelectCountry"></select>
+            <span asp-validation-for="CreateCity.Country"></span>
+        </div>
+
+        <input type="submit" name="submit" value="Create" class="submit">
+    </fieldset>
+</form>
+
+@if (Model.Cities.List.Any())
+{
+    <div class="container table cities">
+        <div class="row column-headers">
+            <div class="column-header col-xs-3 col-sm-3 col-md-3 col-lg-3">ID</div>
+            <div class="column-header col-xs-3 col-sm-3 col-md-3 col-lg-3">Name</div>
+            <div class="column-header col-xs-3 col-sm-3 col-md-3 col-lg-3">Country</div>
+            <div class="column-header col-xs-3 col-sm-3 col-md-3 col-lg-3">Action</div>
+        </div>
+        @foreach (City city in Model.Cities.List)
+        {
+            <partial name="~/Views/Shared/_TableRowCity.cshtml" model="city" />
+        }
+    </div>
+}
+else
+{
+    <p>List has no items.</p>
+}

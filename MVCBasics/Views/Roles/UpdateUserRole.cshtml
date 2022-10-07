@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Edit User's Role";
+}
+
+@model UpdateUserRoleViewModel
+
+<h1>Edit User's Role</h1>
+
+<form asp-controller="Roles" asp-action="UpdateUserRole" method="post" class="update user-role">
+    <div asp-validation-summary="All" class="error-message"></div>
+    <fieldset>
+        <legend>Update roles for user</legend>
+
+        <div class="field">
+            <label asp-for="User" for="user"></label>
+            <select asp-for="User" name="user" asp-items="@Model.SelectUser"></select>
+            <span asp-validation-for="User"></span>
+        </div>
+
+        <div class="field">
+            <label asp-for="Roles" for="roles"></label>
+            <select asp-for="Roles" name="roles" asp-items="@Model.SelectRoles" multiple></select>
+            <span asp-validation-for="Roles"></span>
+        </div>
+
+        <input type="submit" name="submit" value="Update" class="submit">
+    </fieldset>
+</form>

@@ -1,0 +1,12 @@
+﻿@model Language
+
+<div class="row person">
+    <div class="column col-xs-3 col-sm-3 col-md-3 col-lg-3">@Model.ID</div>
+    <div class="column col-xs-3 col-sm-3 col-md-3 col-lg-3">@Model.Name</div>
+    <div class="column col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        <span id="view-language-speakers-@Model.ID" class="link" onclick="GetLanguageSpeakers(@Model.ID)">View speakers</span>
+        <a class="edit" asp-controller="Languages" asp-action="UpdateLanguage" asp-route-id="@Model.ID">Edit</a>
+        <a class="delete" asp-controller="Languages" asp-action="DeleteLanguage" asp-route-id="@Model.ID">Delete</a>
+    </div>
+</div>
+<div id="language-speakers-@Model.ID"></div>

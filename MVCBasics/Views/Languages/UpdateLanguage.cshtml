@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Edit Language";
+}
+
+@model UpdateLanguageViewModel
+
+<h1>Edit Language</h1>
+
+@if (Model.ID == 0)
+{
+    <p>No language found.</p>
+}
+else
+{
+    <form asp-controller="Languages" asp-action="UpdateLanguage" method="post" class="update language">
+        <div asp-validation-summary="All" class="error-message"></div>
+        <fieldset>
+            <legend>Update language details</legend>
+
+            <input asp-for="ID" type="hidden" readonly>
+
+            <div class="field">
+                <label asp-for="Name" for="name"></label>
+                <input asp-for="Name" name="name" type="text">
+                <span asp-validation-for="Name"></span>
+            </div>
+
+            <input type="submit" name="submit" value="Update" class="submit">
+        </fieldset>
+    </form>
+}
